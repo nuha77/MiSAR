@@ -65,7 +65,7 @@
     <eLiterals name="Observability_Pattern_Circuit_Breaker_Metrics_Monitoring" value="17"/>
     <eLiterals name="Observability_Pattern_Log_Correlation" value="18" literal="Observability_Pattern_Log_Correlation"/>
     <eLiterals name="Observability_Pattern_Distributed_Tracing" value="19"/>
-    <eLiterals name="Observability_Pattern_Distributed_Tracing_Monitoring" value="20"/>
+    <eLiterals name="Observability_Pattern_Distributed_Tracing_and_Monitoring" value="20"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ServiceInterface">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="ServerURL" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -75,13 +75,13 @@
         upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MessageDestination">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="operation" eType="#//ServiceOperation"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="messages" lowerBound="1"
-        upperBound="-1" eType="#//ServiceMessage" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="messages" upperBound="-1"
+        eType="#//ServiceMessage" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="Environment" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="GeneratingPSM" lowerBound="1"
         upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="operation" eType="#//ServiceOperation"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Endpoint" eSuperTypes="#//MessageDestination">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="RequestURI" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -104,6 +104,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ServiceDependency">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="ConsumerOperation" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ConsumerMessage" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isWrappedByCircuitBreaker"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="ProviderName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
